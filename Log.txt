@@ -1,2 +1,3 @@
 [2023-03-02 19:46] - Created Navbar.... - Rafe
 [2023-03-02 21:07] - Added Paranova... - Rafe
+[2023-03-02 23:52] - Added Skeleton Loading ... - Rafe
