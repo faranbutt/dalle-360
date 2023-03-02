@@ -1,35 +1,35 @@
 import NavBrand from './assets/images/transparent.png'
 import discord from './assets/images/discord.png'
-import img360 from './assets/images/360.png'
-import { Disclosure } from '@headlessui/react'
+import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDown } from 'heroicons-react'
 
 export default function NavBar() {
     return (
         // Making 2 navbars 
-        <header>
+        <header className='fixed w-full z-50'>
             <nav className="hidden md:block bg-black text-white fixed h-screen p-3">
                 <div className='flex flex-col h-full gap-36 overflow-auto'>
                     <div className='flex items-center justify-center gap-2'>
                         <div>
-                            <img className='w-20 h-20' src={NavBrand} alt="" />
+                            <img className='w-16 h-16' src={NavBrand} alt="" />
                         </div>
-                        <div className='font-bold text-xl'>
+                        <div className='font-bold text-xl mr-2'>
                             Dall-E - 360
                         </div>
                     </div>
                     <div className='h-fulls flex items-center mb-20'>
                         <div className='flex flex-col gap-3'>
-                            <a href='#' className='flex  items-center gap-2'>
-                                <div className='h-1 w-1 bg-white rounded-full'></div>
+                            <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                <div className='h-1.5 w-1.5 bg-rose-600 rounded-full'></div>
+                                {/* <div className='h-1 w-1 bg-rose-600 rounded-full'></div> Using this for active links*/}
                                 Home
                             </a>
-                            <a href='#' className='flex  items-center gap-2'>
-                                <div className='h-1 w-1 bg-white rounded-full'></div>
-                                Apply For Beta Access
+                            <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                <div className='h-1.5 w-1.5 bg-white rounded-full'></div>
+                                Early Access
                             </a>
-                            <a href='#' className='flex  items-center gap-2'>
-                                <div className='h-1 w-1 bg-white rounded-full'></div>
+                            <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                <div className='h-1.5 w-1.5 bg-white rounded-full'></div>
                                 Gallery
                             </a>
                         </div>
@@ -48,7 +48,7 @@ export default function NavBar() {
                     <Disclosure>
                         {({ open }) => (
                             <>
-                                <div className='flex justify-between font'>
+                                <div className='flex justify-between'>
                                     <div className='flex items-center gap-2 font-bold text-lg'>
                                         <div>
                                             <img className='w-12 h-12' src={NavBrand} alt="" />
@@ -66,17 +66,31 @@ export default function NavBar() {
                                         </div>
                                     </Disclosure.Button>
                                 </div>
-                                <Disclosure.Panel className='mt-2 border-t border-white p-2'>
-                                    <div>
-                                        Home
-                                    </div>
-                                    <div>
-                                        Early Access
-                                    </div>
-                                    <div>
-                                        Gallery
-                                    </div>
-                                </Disclosure.Panel>
+                                <Transition
+                                    show={open}
+                                    enter="transition duration-300 ease-out"
+                                    enterFrom="transform translate-y-full opacity-0"
+                                    enterTo="transform translate-y-0 opacity-100"
+                                    leave="transition duration-300 ease-out"
+                                    leaveFrom="transform translate-y-full opacity-100"
+                                    leaveTo="transform scale-50 opacity-0"
+							    >
+                                    <Disclosure.Panel className='mt-2 p-2 font-medium space-y-2'>
+                                        <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                            <div className='h-1.5 w-1.5 bg-rose-600 rounded-full'></div>
+                                            {/* <div className='h-1 w-1 bg-white rounded-full'></div> */}
+                                            Home
+                                        </a>
+                                        <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                            <div className='h-1.5 w-1.5 bg-white rounded-full'></div>
+                                            Early Access
+                                        </a>
+                                        <a href='#' className='flex  items-center gap-2 hover:translate-x-2 duration-300'>
+                                            <div className='h-1.5 w-1.5 bg-white rounded-full'></div>
+                                            Gallery
+                                        </a>
+                                    </Disclosure.Panel>
+                                </Transition>
                             </>
                         )}
                     </Disclosure>
