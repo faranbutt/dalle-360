@@ -7,7 +7,8 @@ import CogIcon from "@heroicons/react/20/solid";
 import InputPrompt from "./prompt";
 import { useState } from "react";
 import SettingsPrompt from "./configurations";
-
+import ViewTypeDropdown from "./generate360";
+import { Link,Outlet } from "react-router-dom";
 export default function NavBar() {
 	let [isOpen, setIsOpen] = useState(false);
 	let [showSettings, setShowSettings] = useState(false);
@@ -39,13 +40,14 @@ export default function NavBar() {
 								<div className="h-1.5 w-1.5 bg-rose-600 rounded-full"></div>
 								Home
 							</a>
-							<a
+							<Link
 								href="#"
 								className="flex  items-center gap-2 hover:translate-x-2 duration-300"
+								to={"/auth"}
 							>
 								<div className="h-1.5 w-1.5 bg-white rounded-full"></div>
 								Early Access
-							</a>
+							</Link>
 							<a
 								href="#"
 								className="flex  items-center gap-2 hover:translate-x-2 duration-300"
@@ -53,40 +55,16 @@ export default function NavBar() {
 								<div className="h-1.5 w-1.5 bg-white rounded-full"></div>
 								Gallery
 							</a>
-							<button
-								onClick={() => setIsOpen(true)}
+							<a
+								href="#"
 								className="flex  items-center gap-2 hover:translate-x-2 duration-300"
 							>
-								<div
-									className={`h-1.5 w-1.5 ${
-										isOpen ? "bg-rose-600" : "bg-white"
-									} rounded-full`}
-								></div>
-								Prompt
-								<InputPrompt
-									isOpen={isOpen}
-									setIsOpen={setIsOpen}
-									onSubmit={handleSubmit}
-								/>
-							</button>
-							<button
-								onClick={() => setShowSettings(true)}
-								className="flex items-center gap-1 hover:translate-x-2 duration-300"
-							>
-								{/* <CogIcon
-									className={`${
-										showSettings
-											? "text-rose-600"
-											: "text-inherit"
-									}`}
-								/> */}
-								Settings
-								<SettingsPrompt
-									isOpen={showSettings}
-									setIsOpen={setShowSettings}
-								/>
-							</button>
+								<div className="h-1.5 w-1.5 bg-white rounded-full"></div>
+								Generate 360
+							</a>
+							<ViewTypeDropdown />
 						</div>
+						
 					</div>
 					<a
 						href="#"
@@ -167,24 +145,13 @@ function MobileNav({ setIsOpen, isOpen, handleSubmit }) {
 										<div className="h-1.5 w-1.5 bg-white rounded-full"></div>
 										Gallery
 									</a>
-									<button
-										onClick={() => setIsOpen(true)}
+									<a
+										href="#"
 										className="flex  items-center gap-2 hover:translate-x-2 duration-300"
 									>
-										<div
-											className={`h-1.5 w-1.5 ${
-												isOpen
-													? "bg-rose-600"
-													: "bg-white"
-											} rounded-full`}
-										></div>
-										Prompt
-										<InputPrompt
-											isOpen={isOpen}
-											setIsOpen={setIsOpen}
-											onSubmit={handleSubmit}
-										/>
-									</button>
+										<div className="h-1.5 w-1.5 bg-white rounded-full"></div>
+										Generate 360
+									</a>
 								</Disclosure.Panel>
 							</Transition>
 						</>
