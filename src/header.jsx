@@ -1,7 +1,9 @@
 import NavBrand from "./assets/images/transparent.png";
 import discord from "./assets/images/discord.png";
 import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronDown, Cog } from "heroicons-react";
+// import { ChevronDown, Cog } from "heroicons-react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import CogIcon from "@heroicons/react/20/solid";
 import InputPrompt from "./prompt";
 import { useState } from "react";
 import SettingsPrompt from "./configurations";
@@ -71,13 +73,13 @@ export default function NavBar() {
 								onClick={() => setShowSettings(true)}
 								className="flex items-center gap-1 hover:translate-x-2 duration-300"
 							>
-								<Cog
+								{/* <CogIcon
 									className={`${
 										showSettings
 											? "text-rose-600"
 											: "text-inherit"
 									}`}
-								/>
+								/> */}
 								Settings
 								<SettingsPrompt
 									isOpen={showSettings}
@@ -130,7 +132,7 @@ function MobileNav({ setIsOpen, isOpen, handleSubmit }) {
 										}
                                             transition-all duration-500 rounded-full border-2 p-0.5 flex items-center justify-center border-t-red-400`}
 									>
-										<ChevronDown />
+										<ChevronDownIcon />
 									</div>
 								</Disclosure.Button>
 							</div>

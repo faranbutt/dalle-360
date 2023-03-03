@@ -5,33 +5,41 @@ import {
 	XMarkIcon,
 } from "@heroicons/react/20/solid";
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-
+import Dall from './assets/images/dall.png'
 const viewType = [
+	{ id: 0, name: "View Type" },
 	{ id: 1, name: "Paranomic View" },
 	{ id: 2, name: "Wide Angle" },
 ];
 
 const roomType = [
-	{ id: 1, name: "Luxury House" },
+	{ id: 0, name: "Room Type"},
+	{ id: 1, name: "Luxury House"},
 	{ id: 2, name: "Office Room" },
 ];
 
+// const roomStyle = [
+// 	{ id: 0, name: "Room Styles" },
+// 	{ id: 1, name: "Luxury House" },
+// 	{ id: 2, name: "Light Bloom" },
+// 	{ id: 3, name: "Atmospheric" },
+// 	{ id: 4, name: "Cozy" },
+// 	{ id: 5, name: "Plants" },
+// 	{ id: 6, name: "minimalist contemporary modern design living room" },
+// 	{ id: 7, name: "fabric and textiles" },
+// 	{ id: 8, name: "Office room" },
+// 	{ id: 9, name: "LED lights" },
+// 	{ id: 10, name: "Seats" },
+// 	{ id: 11, name: "coffee table" },
+// 	{ id: 12, name: "Carpet" },
+// 	{ id: 13, name: "Dinner table" },
+// 	{ id: 14, name: "wide windows" },
+// ];
 const roomStyle = [
-	{ id: 1, name: "Luxury House" },
-	{ id: 2, name: "Light Bloom" },
-	{ id: 3, name: "Atmospheric" },
-	{ id: 4, name: "Cozy" },
-	{ id: 5, name: "Plants" },
-	{ id: 6, name: "minimalist contemporary modern design living room" },
-	{ id: 7, name: "fabric and textiles" },
-	{ id: 8, name: "Office room" },
-	{ id: 9, name: "LED lights" },
-	{ id: 10, name: "Seats" },
-	{ id: 11, name: "coffee table" },
-	{ id: 12, name: "Carpet" },
-	{ id: 13, name: "Dinner table" },
-	{ id: 14, name: "wide windows" },
-];
+	{id:0,name:"Room Styles"},
+	{id:1,name:"Luxury House",value:[{id:0,name:"Light Bloom"}]},
+	{id:2,name:"Office Room",value:[{id:0,name:"Led Lights"}]}
+]
 /*
 View Type
 Panoramic view
@@ -95,9 +103,16 @@ export default function SettingsPrompt({ isOpen, setIsOpen }) {
 										as="h3"
 										className="text-lg font-medium leading-6 text-gray-900"
 									>
-										<div className="flex items-center mb-4 ">
+										<div className="flex justify-center items-center mb-4 ">
 											<div className="text-center w-full">
-												~ Configure ~
+											<img
+											className="m-20"
+											style={{height:"30px"}}
+											src={Dall}
+											alt="dall"
+											
+										/>
+										<div>Dall-E-360</div>
 											</div>
 											<div
 												role="button"
@@ -115,6 +130,7 @@ export default function SettingsPrompt({ isOpen, setIsOpen }) {
 														arrayOfObjects={
 															viewType
 														}
+														type="viewtype"
 													/>
 												</div>
 												<div className="w-full">
@@ -122,12 +138,14 @@ export default function SettingsPrompt({ isOpen, setIsOpen }) {
 														arrayOfObjects={
 															roomType
 														}
+														type="roomType"
 													/>
 												</div>
 											</div>
 											<div className="w-full">
 												<Demo
 													arrayOfObjects={roomStyle}
+													type="roomStyle"
 												/>
 											</div>
 										</div>
@@ -159,7 +177,8 @@ const people = [
 	{ id: 5, name: "Tanya Fox" },
 	{ id: 6, name: "Hellen Schmidt" },
 ];
-function Demo({ arrayOfObjects }) {
+function Demo({ arrayOfObjects , type}) {
+	console.log(type);	
 	const [selected, setSelected] = useState(arrayOfObjects[0]);
 	function isSelected(a, b) {
 		if (a === b) {
@@ -171,8 +190,47 @@ function Demo({ arrayOfObjects }) {
 
 	return (
 		<div>
-			<Listbox value={selected} onChange={setSelected}>
+			{type === "roomStyle" ? (
+			<div>
+				<Listbox value={selected} onChange={setSelected}>
 				<Listbox.Button className="border rounded-lg p-2 w-full">
+					
+					<div className="flex justify-between px-3">
+						{selected.name}
+						<ChevronUpDownIcon className="w-6 h-6" />
+					</div>
+				</Listbox.Button>
+				<Transition
+					enter="ease-out duration-300"
+					enterFrom="opacity-0"
+					enterTo="opacity-100"
+					leave="ease-in duration-200"
+					leaveFrom="opacity-100"
+					leaveTo="opacity-0"
+				>
+					<div className="mt-3">
+						<Listbox.Options className="space-y-1">
+						{arrayOfObjects.map((option) => (
+							<div>
+							<Listbox.Button className="border rounded-lg p-2 w-full">
+								<div className="flex justify-between px-3">
+									{option.name}
+									<ChevronUpDownIcon className="w-6 h-6" />
+									</div>
+								</Listbox.Button>
+							</div>
+						))}
+								
+						</Listbox.Options>
+					</div>
+				</Transition>
+				</Listbox>
+				
+			</div>
+				) :  (
+				<div><Listbox value={selected} onChange={setSelected}>
+				<Listbox.Button className="border rounded-lg p-2 w-full">
+					
 					<div className="flex justify-between px-3">
 						{selected.name}
 						<ChevronUpDownIcon className="w-6 h-6" />
@@ -225,7 +283,7 @@ function Demo({ arrayOfObjects }) {
 						</Listbox.Options>
 					</div>
 				</Transition>
-			</Listbox>
+			</Listbox></div>)}
 		</div>
 	);
 }
