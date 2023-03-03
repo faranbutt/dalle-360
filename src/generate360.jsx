@@ -88,11 +88,176 @@
 // export default ViewTypeDropdown;
 
 
+// import React, { useState } from 'react';
+
+// const ViewTypeDropdown = () => {
+//   const [environment, setEnvironment] = useState('');
+//   const [accessories, setAccessories] = useState('');
+//   const [generatedOutput, setGeneratedOutput] = useState('');
+
+//   const environmentOptions = [
+//     { label: 'Living Room', value: 'living-room' },
+//     { label: 'Mountains', value: 'mountains' }
+//   ];
+
+//   const accessoriesOptions = {
+//     'living-room': [
+//       { label: 'Seats', value: 'seats' },
+//       { label: 'Coffee Table', value: 'coffee-table' },
+//       { label: 'Carpet', value: 'carpet' },
+//       { label: 'Dinner Table', value: 'dinner' },
+//       { label: 'Wide Windows', value: 'wide-window' },
+//       { label: 'Plants', value: 'plants' },
+//     ],
+//     'mountains': [
+//       { label: 'Sunset', value: 'sunset' },
+//       { label: 'Thunder Clouds', value: 'thunder-clouds' },
+//       { label: 'Sunrise', value: 'sunrise' },
+//       { label: 'Starry Night', value: 'starry-night' }
+//     ]
+//   };
+
+//   const handleEnvironmentChange = (event) => {
+//     setEnvironment(event.target.value);
+//     setAccessories('');
+//   };
+
+//   const handleAccessoriesChange = (event) => {
+//     setAccessories(event.target.value);
+//   };
+
+//   const handleGenerate = () => {
+//     setGeneratedOutput(`${environment}-${accessories}`);
+//   };
+
+//   return (
+//     <div>
+//       <label htmlFor="environment-select">Select Environment:</label>
+//       <select id="environment-select" value={environment} onChange={handleEnvironmentChange}>
+//         <option value="">Select an environment</option>
+//         {environmentOptions.map((option) => (
+//           <option key={option.value} value={option.value}>{option.label}</option>
+//         ))}
+//       </select>
+
+//       {environment && (
+//         <div>
+//           <label htmlFor="accessories-select">Select Accessories:</label>
+//           <select id="accessories-select" value={accessories} onChange={handleAccessoriesChange}>
+//             <option value="">Select an accessory</option>
+//             {accessoriesOptions[environment].map((option) => (
+//               <option key={option.value} value={option.value}>{option.label}</option>
+//             ))}
+//           </select>
+//         </div>
+//       )}
+//       <div>
+//       <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleGenerate}>Generate</button>
+//       {generatedOutput && <p>{generatedOutput}</p>}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ViewTypeDropdown;
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+
+// const ViewTypeDropdown = () => {
+//   const [environment, setEnvironment] = useState('');
+//   const [accessories, setAccessories] = useState([]);
+//   const [generatedOutput, setGeneratedOutput] = useState('');
+
+//   const environmentOptions = [
+//     { label: 'Living Room', value: 'living-room' },
+//     { label: 'Mountains', value: 'mountains' }
+//   ];
+
+//   const accessoriesOptions = {
+//     'living-room': [
+//       { label: 'Seats', value: 'seats' },
+//       { label: 'Coffee Table', value: 'coffee-table' },
+//       { label: 'Carpet', value: 'carpet' }
+//     ],
+//     'mountains': [
+//       { label: 'Sunset', value: 'sunset' },
+//       { label: 'Thunder Clouds', value: 'thunder-clouds' },
+//       { label: 'Sunrise', value: 'sunrise' },
+//       { label: 'Starry Night', value: 'starry-night' }
+//     ]
+//   };
+
+//   const handleEnvironmentChange = (event) => {
+//     setEnvironment(event.target.value);
+//     setAccessories([]);
+//   };
+
+//   const handleAccessoriesChange = (event) => {
+//     const options = event.target.options;
+//     const selectedValues = [];
+//     for (let i = 0; i < options.length; i++) {
+//       if (options[i].selected) {
+//         selectedValues.push(options[i].value);
+//       }
+//     }
+//     setAccessories(selectedValues);
+//   };
+
+//   const handleGenerate = () => {
+//     setGeneratedOutput(`Environment: ${environment}, Accessories: ${accessories.join(', ')}`);
+//   };
+
+//   return (
+//     <div>
+//       <label htmlFor="environment-select">Select Environment:</label>
+//       <select id="environment-select" value={environment} onChange={handleEnvironmentChange}>
+//         <option value="">Select an environment</option>
+//         {environmentOptions.map((option) => (
+//           <option key={option.value} value={option.value}>{option.label}</option>
+//         ))}
+//       </select>
+
+//       {environment && (
+//         <div>
+//           <label htmlFor="accessories-select">Select Accessories:</label>
+//           <select id="accessories-select" value={accessories} onChange={handleAccessoriesChange} multiple>
+//             {accessoriesOptions[environment].map((option) => (
+//               <option key={option.value} value={option.value}>{option.label}</option>
+//             ))}
+//           </select>
+//         </div>
+//       )}
+
+//       <button onClick={handleGenerate}>Generate</button>
+//       {generatedOutput && <p>{generatedOutput}</p>}
+//     </div>
+//   );
+// };
+
+// export default ViewTypeDropdown;
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 
-const ViewTypeDropdown = () => {
+const EnvironmentSelector = () => {
   const [environment, setEnvironment] = useState('');
-  const [accessories, setAccessories] = useState('');
+  const [accessories, setAccessories] = useState([]);
   const [generatedOutput, setGeneratedOutput] = useState('');
 
   const environmentOptions = [
@@ -102,12 +267,14 @@ const ViewTypeDropdown = () => {
 
   const accessoriesOptions = {
     'living-room': [
+
+      { label: 'LED', value: 'led' },
       { label: 'Seats', value: 'seats' },
       { label: 'Coffee Table', value: 'coffee-table' },
       { label: 'Carpet', value: 'carpet' },
       { label: 'Dinner Table', value: 'dinner' },
       { label: 'Wide Windows', value: 'wide-window' },
-      { label: 'Plants', value: 'plants' },
+      { label: 'Starry Nights', value: 'starry-night' },
     ],
     'mountains': [
       { label: 'Sunset', value: 'sunset' },
@@ -119,15 +286,36 @@ const ViewTypeDropdown = () => {
 
   const handleEnvironmentChange = (event) => {
     setEnvironment(event.target.value);
-    setAccessories('');
+    setAccessories([]);
   };
 
   const handleAccessoriesChange = (event) => {
-    setAccessories(event.target.value);
+    const options = event.target.options;
+    const selectedValues = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedValues.push(options[i].value);
+      }
+    }
+    setAccessories(selectedValues);
+  };
+
+  // Add an additional event handler to handle clicks on individual accessory options
+  const handleAccessoryClick = (event) => {
+    const clickedValue = event.target.value;
+    const isSelected = accessories.includes(clickedValue);
+
+    if (isSelected) {
+      // Remove the clicked option from the selected options
+      setAccessories(accessories.filter((value) => value !== clickedValue));
+    } else {
+      // Add the clicked option to the selected options
+      setAccessories([...accessories, clickedValue]);
+    }
   };
 
   const handleGenerate = () => {
-    setGeneratedOutput(`${environment}-${accessories}`);
+    setGeneratedOutput(`${environment} ${accessories.join(', ')}`);
   };
 
   return (
@@ -142,21 +330,25 @@ const ViewTypeDropdown = () => {
 
       {environment && (
         <div>
-          <label htmlFor="accessories-select">Select Accessories:</label>
-          <select id="accessories-select" value={accessories} onChange={handleAccessoriesChange}>
-            <option value="">Select an accessory</option>
-            {accessoriesOptions[environment].map((option) => (
-              <option key={option.value} value={option.value}>{option.label}</option>
-            ))}
-          </select>
+          <label>Select Accessories:</label>
+          {accessoriesOptions[environment].map((option) => (
+            <div key={option.value}>
+              <input
+                type="checkbox"
+                value={option.value}
+                checked={accessories.includes(option.value)}
+                onClick={handleAccessoryClick}
+              />
+              <label>{option.label}</label>
+            </div>
+          ))}
         </div>
       )}
-      <div>
+
       <button onClick={handleGenerate}>Generate</button>
       {generatedOutput && <p>{generatedOutput}</p>}
-      </div>
     </div>
   );
 };
 
-export default ViewTypeDropdown;
+export default EnvironmentSelector;
