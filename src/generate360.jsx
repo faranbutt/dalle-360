@@ -245,14 +245,6 @@
 
 
 
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 
 const EnvironmentSelector = () => {
@@ -319,7 +311,8 @@ const EnvironmentSelector = () => {
   };
 
   return (
-    <div>
+    <div className='p-5 m-5'>
+      <div>
       <label htmlFor="environment-select">Select Environment:</label>
       <select id="environment-select" value={environment} onChange={handleEnvironmentChange}>
         <option value="">Select an environment</option>
@@ -327,9 +320,9 @@ const EnvironmentSelector = () => {
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </select>
-
+      </div>
       {environment && (
-        <div>
+        <div className='m-6 gap-10'>
           <label>Select Accessories:</label>
           {accessoriesOptions[environment].map((option) => (
             <div key={option.value}>
@@ -344,9 +337,10 @@ const EnvironmentSelector = () => {
           ))}
         </div>
       )}
-
-      <button onClick={handleGenerate}>Generate</button>
+      <div>
+      <button onClick={handleGenerate} className='p-6 bg-red-400'>Generate</button>
       {generatedOutput && <p>{generatedOutput}</p>}
+    </div>
     </div>
   );
 };
