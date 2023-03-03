@@ -151,9 +151,10 @@ const ViewTypeDropdown = () => {
           </select>
         </div>
       )}
-
+      <div>
       <button onClick={handleGenerate}>Generate</button>
       {generatedOutput && <p>{generatedOutput}</p>}
+      </div>
     </div>
   );
 };
