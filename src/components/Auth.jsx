@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Authentication() {
+const  Authentication = () => {
     return (
         <div>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
@@ -133,3 +133,4 @@ export default function Authentication() {
         </div>
     );
 }
+export default Authentication;
