@@ -311,8 +311,8 @@ const EnvironmentSelector = () => {
   };
 
   return (
-    <div className='p-5 m-5'>
-      <div>
+    <div className='p-5 mb-5'>
+      <div className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
       <label htmlFor="environment-select">Select Environment:</label>
       <select id="environment-select" value={environment} onChange={handleEnvironmentChange}>
         <option value="">Select an environment</option>
@@ -325,8 +325,9 @@ const EnvironmentSelector = () => {
         <div className='m-6 gap-10'>
           <label>Select Accessories:</label>
           {accessoriesOptions[environment].map((option) => (
-            <div key={option.value}>
+            <div className='m-3' key={option.value}>
               <input
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 type="checkbox"
                 value={option.value}
                 checked={accessories.includes(option.value)}
@@ -338,7 +339,7 @@ const EnvironmentSelector = () => {
         </div>
       )}
       <div>
-      <button onClick={handleGenerate} className='p-6 bg-red-400'>Generate</button>
+      <button onClick={handleGenerate} class="m-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Generate</button>
       {generatedOutput && <p>{generatedOutput}</p>}
     </div>
     </div>
