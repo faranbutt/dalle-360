@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { classNames } from "./classNames";
 
-export default function MyModal({ isOpen, setIsOpen, onSubmit }) {
+export default function InputPrompt({ isOpen, setIsOpen, onSubmit }) {
 	const [value, setValue] = useState("");
 
 	function closeModal() {

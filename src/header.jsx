@@ -1,12 +1,14 @@
 import NavBrand from "./assets/images/transparent.png";
 import discord from "./assets/images/discord.png";
 import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronDown } from "heroicons-react";
-import MyModal from "./prompt";
+import { ChevronDown, Cog } from "heroicons-react";
+import InputPrompt from "./prompt";
 import { useState } from "react";
+import SettingsPrompt from "./configurations";
 
 export default function NavBar() {
 	let [isOpen, setIsOpen] = useState(false);
+	let [showSettings, setShowSettings] = useState(false);
 
 	function handleSubmit(value) {
 		console.log(`User entered: ${value}`);
@@ -27,7 +29,7 @@ export default function NavBar() {
 						</div>
 					</div>
 					<div className="h-fulls flex items-center mb-20">
-						<div className="flex flex-col gap-3">
+						<div className="flex flex-col gap-3 ">
 							<a
 								href="#"
 								className="flex  items-center gap-2 hover:translate-x-2 duration-300"
@@ -53,12 +55,33 @@ export default function NavBar() {
 								onClick={() => setIsOpen(true)}
 								className="flex  items-center gap-2 hover:translate-x-2 duration-300"
 							>
-								<div className={`h-1.5 w-1.5 ${isOpen?"bg-rose-600":"bg-white"} rounded-full`}></div>
+								<div
+									className={`h-1.5 w-1.5 ${
+										isOpen ? "bg-rose-600" : "bg-white"
+									} rounded-full`}
+								></div>
 								Prompt
-								<MyModal
+								<InputPrompt
 									isOpen={isOpen}
 									setIsOpen={setIsOpen}
 									onSubmit={handleSubmit}
+								/>
+							</button>
+							<button
+								onClick={() => setShowSettings(true)}
+								className="flex items-center gap-1 hover:translate-x-2 duration-300"
+							>
+								<Cog
+									className={`${
+										showSettings
+											? "text-rose-600"
+											: "text-inherit"
+									}`}
+								/>
+								Settings
+								<SettingsPrompt
+									isOpen={showSettings}
+									setIsOpen={setShowSettings}
 								/>
 							</button>
 						</div>
@@ -146,9 +169,15 @@ function MobileNav({ setIsOpen, isOpen, handleSubmit }) {
 										onClick={() => setIsOpen(true)}
 										className="flex  items-center gap-2 hover:translate-x-2 duration-300"
 									>
-										<div className={`h-1.5 w-1.5 ${isOpen?"bg-rose-600":"bg-white"} rounded-full`}></div>
+										<div
+											className={`h-1.5 w-1.5 ${
+												isOpen
+													? "bg-rose-600"
+													: "bg-white"
+											} rounded-full`}
+										></div>
 										Prompt
-										<MyModal
+										<InputPrompt
 											isOpen={isOpen}
 											setIsOpen={setIsOpen}
 											onSubmit={handleSubmit}
