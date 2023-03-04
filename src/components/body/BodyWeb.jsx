@@ -1,5 +1,5 @@
-import Body from "../../body";
-import NavBar from "../../header";
+import Body from "./body";
+import NavBar from "./header";
 const BodyWeb = () => {
   return (
     <div className="fixed w-full">

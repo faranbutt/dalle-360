@@ -1,4 +1,4 @@
-import Authentication from "./components/Auth";
+import Authentication from "./components/Authentication/Auth";
 import BodyWeb from "./components/body/BodyWeb";
 import { Route, Routes, Outlet } from "react-router-dom";
 function App() {

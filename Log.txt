@@ -1,5 +1,0 @@
-[2023-03-02 19:46] - Created Navbar.... - Rafe
-[2023-03-02 21:07] - Added Paranova... - Rafe
-[2023-03-02 23:52] - Added Skeleton Loading ... - Rafe
-[2023-03-03 02:15] - Created User Prompt... - Rafe
-[2023-03-03 05:19] - Created Settings... - Rafe
