@@ -42,7 +42,7 @@ https://github.com/ronykris/panoraven-auto
 View the Demo [App](https://storage.googleapis.com/lablab-video-submissions/clbqrbp1w0000356j88fvai67%2Fraw%2Fsubmission-video-x-clbqrbp1w0000356j88fvai67-clesfkfh3007m2v6jtakr354i.mp4)
 
 ## Cover
-![y1](https://github.com/timothelaborie/Eye-blinking-classifier/blob/main/Blue%20Modern%20Medical%20Facebook%20fundraiser%20cover%20photo.png)
+![y1](https://github.com/faranbutt/dalle-360/blob/main/public/dall360.png)
 
 ## Technology Stack
 
@@ -66,7 +66,7 @@ View the Demo [App](https://storage.googleapis.com/lablab-video-submissions/clbq
 
 ## Structure
 
-![y2](https://github.com/faranbutt/Eye-blinking-classifier/blob/main/1.jpg)
+![y2](https://github.com/faranbutt/dalle-360/blob/main/public/360struct.png)
 
 
 ## How to use the app
