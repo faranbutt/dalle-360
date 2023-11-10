@@ -23,7 +23,7 @@ With the technological leap in generative AI, there are countless new businesses
 - [Features](#features)
 - [Structure](#structure)
 - [How to use the app](#how-to-use-the-app)
-- [Collaborators](#collaborators)
+- [Contributors](#contributors)
 - [Hackathon Link](#hackathon-link)
 - [References](#references)
 - [License](#license)
@@ -89,7 +89,7 @@ cd panoraven-auto
 npm install
 npm start
 ```
-## Authors
+## Contributors
 
 | Name            | Link                                   |
 | --------------- | -------------------------------------- |
